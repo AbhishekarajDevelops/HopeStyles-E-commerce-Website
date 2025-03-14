@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Collection | Styles</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+</style>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: '#1a1a1a',
+secondary: '#f5f5f5'
+},
+borderRadius: {
+'none': '0px',
+'sm': '4px',
+DEFAULT: '8px',
+'md': '12px',
+'lg': '16px',
+'xl': '20px',
+'2xl': '24px',
+'3xl': '32px',
+'full': '9999px',
+'button': '8px'
+}
+}
+}
+}
+</script>
+</head>
+<body class="bg-white min-h-screen">
+<header class="fixed top-0 left-0 right-0 bg-white shadow-sm z-50">
+<div class="container mx-auto px-4">
+<nav class="flex items-center justify-between h-16">
+<div class="flex-1 flex justify-start">
+<div class="flex items-center space-x-4">
+<button class="w-10 h-10 flex items-center justify-center text-gray-600 hover:text-primary transition-colors">
+<i class="ri-menu-line text-xl"></i>
+</button>
+</div>
+</div>
+<div class="flex-1 flex justify-center">
+    <a href="index.html">
+        <h1 class="text-3xl font-['Pacifico'] text-primary">Styles</h1>
+      </a>
+      
+</div>
+<div class="flex-1 flex justify-end">
+<div class="flex items-center space-x-4">
+<button class="w-10 h-10 flex items-center justify-center text-gray-600 hover:text-primary transition-colors">
+<i class="ri-search-line text-xl"></i>
+</button>
+<button class="w-10 h-10 flex items-center justify-center text-gray-600 hover:text-primary transition-colors">
+<i class="ri-shopping-bag-line text-xl"></i>
+</button>
+</div>
+</div>
+</nav>
+</div>
+</header>
+<main class="container mx-auto px-4 pt-24 pb-16">
+<div class="flex items-center justify-between mb-8">
+<h2 class="text-2xl font-semibold text-gray-900">New Collection</h2>
+<div class="flex items-center space-x-4">
+<div class="relative">
+<button id="sortButton" class="px-4 py-2 text-sm text-gray-700 bg-white border border-gray-200 rounded-button hover:bg-gray-50 flex items-center space-x-2">
+<span>Sort by</span>
+<i class="ri-arrow-down-s-line"></i>
+</button>
+<div id="sortDropdown" class="hidden absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded shadow-lg z-10">
+<div class="py-1">
+<button class="w-full px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50">Price: Low to High</button>
+<button class="w-full px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50">Price: High to Low</button>
+<button class="w-full px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50">Newest First</button>
+</div>
+</div>
+</div>
+<div class="relative">
+<button id="filterButton" class="px-4 py-2 text-sm text-gray-700 bg-white border border-gray-200 rounded-button hover:bg-gray-50 flex items-center space-x-2">
+<span>Filter</span>
+<i class="ri-filter-3-line"></i>
+</button>
+<div id="filterDropdown" class="hidden absolute right-0 mt-2 w-64 bg-white border border-gray-200 rounded shadow-lg z-10">
+<div class="p-4">
+<h3 class="font-medium text-gray-900 mb-3">Categories</h3>
+<div class="space-y-2">
+<label class="flex items-center">
+<input type="checkbox" class="form-checkbox text-primary rounded">
+<span class="ml-2 text-sm text-gray-700">T-Shirts</span>
+</label>
+<label class="flex items-center">
+<input type="checkbox" class="form-checkbox text-primary rounded">
+<span class="ml-2 text-sm text-gray-700">Sweaters</span>
+</label>
+<label class="flex items-center">
+<input type="checkbox" class="form-checkbox text-primary rounded">
+<span class="ml-2 text-sm text-gray-700">Jackets</span>
+</label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="productGrid">
+</div>
+</main>
+<div id="quickAddModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+<div class="bg-white rounded-lg p-6 max-w-md w-full mx-4">
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-lg font-semibold text-gray-900">Quick Add</h3>
+<button onclick="closeQuickAddModal()" class="text-gray-400 hover:text-gray-500">
+<i class="ri-close-line text-xl"></i>
+</button>
+</div>
+<div id="quickAddContent" class="mb-6">
+</div>
+<div class="flex justify-end space-x-4">
+<button onclick="closeQuickAddModal()" class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-button hover:bg-gray-200">Cancel</button>
+<button onclick="addToCart()" class="px-4 py-2 text-sm font-medium text-white bg-primary rounded-button hover:bg-opacity-90">Add to Cart</button>
+</div>
+</div>
+</div>
+<script>
+const products = [
+{
+id: 1,
+name: "Classic Cotton T-Shirt",
+price: 29.99,
+image: "https://public.readdy.ai/ai/img_res/319e9f48135eb511f7fa0c9e2ce99206.jpg"
+},
+{
+id: 2,
+name: "Wool Blend Sweater",
+price: 89.99,
+image: "https://public.readdy.ai/ai/img_res/5c98b8578b86ad5c67a224ce4256a998.jpg"
+},
+{
+id: 3,
+name: "Denim Jacket",
+price: 129.99,
+image: "https://public.readdy.ai/ai/img_res/24cb5b03d32ad30eb76d1ae14227d8c4.jpg"
+},
+{
+id: 4,
+name: "Linen Shirt",
+price: 59.99,
+image: "https://public.readdy.ai/ai/img_res/07c46604feadbc4a15ab769a3c2af77e.jpg"
+},
+{
+id: 5,
+name: "Cashmere Cardigan",
+price: 199.99,
+image: "https://public.readdy.ai/ai/img_res/fc0479686a1e43ad19d59ba5acf33211.jpg"
+},
+{
+id: 6,
+name: "Slim Fit Chinos",
+price: 69.99,
+image: "https://public.readdy.ai/ai/img_res/c3072f8f9be2ef8f7cbac632b8568353.jpg"
+},
+{
+id: 7,
+name: "Merino Wool Pullover",
+price: 119.99,
+image: "https://public.readdy.ai/ai/img_res/a47f419b4a453d27d8a3c452900d2a4a.jpg"
+},
+{
+id: 8,
+name: "Cotton Oxford Shirt",
+price: 79.99,
+image: "https://public.readdy.ai/ai/img_res/e87c2775e11df430088ca6ac09af48b2.jpg"
+},
+{
+id: 9,
+name: "Leather Bomber Jacket",
+price: 299.99,
+image: "https://public.readdy.ai/ai/img_res/8128a02498420d96c0c4ec477982af57.jpg"
+},
+{
+id: 10,
+name: "Silk Blend Dress Shirt",
+price: 149.99,
+image: "https://public.readdy.ai/ai/img_res/34cfb087e22f2ad2fca486b7a510ea15.jpg"
+},
+{
+id: 11,
+name: "Tailored Wool Blazer",
+price: 249.99,
+image: "https://public.readdy.ai/ai/img_res/02f8796f414319d732a83007ba953f68.jpg"
+},
+{
+id: 12,
+name: "Premium Denim Jeans",
+price: 159.99,
+image: "https://public.readdy.ai/ai/img_res/3c5db4674258b49110071aef4d1b467a.jpg"
+},
+{
+id: 13,
+name: "Cashmere Blend Scarf",
+price: 89.99,
+image: "https://public.readdy.ai/ai/img_res/b79e41f2a77f879ddd770f710fdb222b.jpg"
+},
+{
+id: 14,
+name: "Merino Wool Turtleneck",
+price: 139.99,
+image: "https://public.readdy.ai/ai/img_res/0c0524999e82e2400bc59f1ca70803a6.jpg"
+},
+{
+id: 15,
+name: "Cotton Polo Shirt",
+price: 49.99,
+image: "https://public.readdy.ai/ai/img_res/2e609cd121260ef3bd8d0b0938bd848c.jpg"
+},
+{
+id: 16,
+name: "Linen Blend Blazer",
+price: 179.99,
+image: "https://public.readdy.ai/ai/img_res/bec370376840dfb0f8b0dfac2a63a42f.jpg"
+}
+];
+function renderProducts() {
+const grid = document.getElementById('productGrid');
+grid.innerHTML = products.map(product => `
+<div class="group relative bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<div class="aspect-[4/5] overflow-hidden">
+<img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+<div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-opacity flex items-center justify-center">
+<button onclick="showQuickAddModal(${product.id})" class="opacity-0 group-hover:opacity-100 bg-white text-primary px-4 py-2 rounded-button shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all">
+Quick Add
+</button>
+</div>
+</div>
+<div class="p-4">
+<h3 class="text-gray-900 font-medium">${product.name}</h3>
+<p class="text-gray-900 mt-1">$${product.price}</p>
+</div>
+</div>
+`).join('');
+}
+function showQuickAddModal(productId) {
+const product = products.find(p => p.id === productId);
+const modal = document.getElementById('quickAddModal');
+const content = document.getElementById('quickAddContent');
+content.innerHTML = `
+<div class="flex space-x-4">
+<img src="${product.image}" alt="${product.name}" class="w-24 h-32 object-cover rounded">
+<div>
+<h4 class="font-medium text-gray-900">${product.name}</h4>
+<p class="text-gray-900 mt-1">$${product.price}</p>
+<div class="mt-4">
+<label class="block text-sm font-medium text-gray-700 mb-1">Size</label>
+<select class="w-full border border-gray-200 rounded p-2 text-sm">
+<option>Small</option>
+<option>Medium</option>
+<option>Large</option>
+<option>X-Large</option>
+</select>
+</div>
+</div>
+</div>
+`;
+modal.style.display = 'flex';
+}
+function closeQuickAddModal() {
+const modal = document.getElementById('quickAddModal');
+modal.style.display = 'none';
+}
+function addToCart() {
+const notification = document.createElement('div');
+notification.className = 'fixed bottom-4 right-4 bg-green-500 text-white px-6 py-3 rounded shadow-lg transform transition-transform duration-300';
+notification.textContent = 'Added to cart successfully!';
+document.body.appendChild(notification);
+setTimeout(() => {
+notification.remove();
+}, 3000);
+closeQuickAddModal();
+}
+document.getElementById('sortButton').addEventListener('click', function() {
+document.getElementById('sortDropdown').classList.toggle('hidden');
+});
+document.getElementById('filterButton').addEventListener('click', function() {
+document.getElementById('filterDropdown').classList.toggle('hidden');
+});
+document.addEventListener('click', function(event) {
+const sortDropdown = document.getElementById('sortDropdown');
+const filterDropdown = document.getElementById('filterDropdown');
+const sortButton = document.getElementById('sortButton');
+const filterButton = document.getElementById('filterButton');
+if (!event.target.closest('#sortButton') && !sortDropdown.classList.contains('hidden')) {
+sortDropdown.classList.add('hidden');
+}
+if (!event.target.closest('#filterButton') && !filterDropdown.classList.contains('hidden')) {
+filterDropdown.classList.add('hidden');
+}
+});
+renderProducts();
+</script>
+</body>
+</html>

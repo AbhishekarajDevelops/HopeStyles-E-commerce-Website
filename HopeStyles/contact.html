@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+.form-field:focus-within label {
+color: #4F46E5;
+transform: translateY(-1.5rem) scale(0.75);
+background: white;
+padding: 0 0.25rem;
+}
+.form-field label {
+transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.form-field input, .form-field textarea {
+transition: all 0.3s ease;
+}
+.form-field input:focus, .form-field textarea:focus {
+box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.1), 0 2px 4px -1px rgba(79, 70, 229, 0.06);
+}
+.success-message {
+transform: translateY(-100%);
+transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+opacity: 0;
+}
+.success-message.show {
+transform: translateY(0);
+opacity: 1;
+}
+.social-icon {
+transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.social-icon:hover {
+transform: translateY(-2px);
+}
+.contact-card {
+transition: all 0.3s ease;
+}
+.contact-card:hover {
+transform: translateY(-4px);
+box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+.nav-link {
+position: relative;
+}
+.nav-link::after {
+content: '';
+position: absolute;
+bottom: -2px;
+left: 50%;
+width: 0;
+height: 2px;
+background-color: #4F46E5;
+transition: all 0.3s ease;
+transform: translateX(-50%);
+}
+.nav-link:hover::after {
+width: 100%;
+}
+</style>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: '#4F46E5',
+secondary: '#8B5CF6'
+},
+borderRadius: {
+'none': '0px',
+'sm': '4px',
+DEFAULT: '8px',
+'md': '12px',
+'lg': '16px',
+'xl': '20px',
+'2xl': '24px',
+'3xl': '32px',
+'full': '9999px',
+'button': '8px'
+}
+}
+}
+}
+</script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+<nav class="bg-white shadow-sm">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-16">
+<div class="flex items-center">
+<a href="/" class="font-['Pacifico'] text-2xl text-primary">Hope Styles</a>
+</div>
+<div class="hidden sm:ml-6 sm:flex sm:items-center space-x-8">
+<a href="/" class="nav-link text-gray-500 hover:text-primary px-3 py-2 text-sm font-medium">Home</a>
+<a href="/about" class="nav-link text-gray-500 hover:text-primary px-3 py-2 text-sm font-medium">About</a>
+<a href="/services" class="nav-link text-gray-500 hover:text-primary px-3 py-2 text-sm font-medium">Services</a>
+<a href="/contact" class="nav-link text-primary px-3 py-2 text-sm font-medium">Contact</a>
+</div>
+</div>
+</div>
+</nav>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<div class="text-center mb-12">
+<h1 class="text-4xl font-bold text-gray-900 mb-4">Get in Touch</h1>
+<p class="text-lg text-gray-600">We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+<div class="bg-white rounded-lg shadow-lg p-8 contact-card">
+<form id="contactForm" class="space-y-6">
+<div class="form-field relative">
+<label for="name" class="absolute left-3 top-3 text-gray-500 pointer-events-none">Full Name</label>
+<input type="text" id="name" name="name" required class="w-full px-3 py-3 border border-gray-300 rounded-button focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary">
+</div>
+<div class="form-field relative">
+<label for="email" class="absolute left-3 top-3 text-gray-500 pointer-events-none">Email Address</label>
+<input type="email" id="email" name="email" required class="w-full px-3 py-3 border border-gray-300 rounded-button focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary">
+</div>
+<div class="form-field relative">
+<label for="phone" class="absolute left-3 top-3 text-gray-500 pointer-events-none">Phone Number (Optional)</label>
+<input type="tel" id="phone" name="phone" class="w-full px-3 py-3 border border-gray-300 rounded-button focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary">
+</div>
+<div class="relative">
+<button type="button" id="subjectDropdown" class="w-full px-3 py-3 border border-gray-300 rounded-button text-left flex justify-between items-center focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary">
+<span id="selectedSubject">Select Subject</span>
+<i class="ri-arrow-down-s-line"></i>
+</button>
+<div id="subjectOptions" class="hidden absolute w-full mt-1 bg-white border border-gray-300 rounded-lg shadow-lg z-10">
+<div class="py-1">
+<a href="#" class="block px-4 py-2 text-gray-800 hover:bg-primary hover:text-white cursor-pointer">General Inquiry</a>
+<a href="#" class="block px-4 py-2 text-gray-800 hover:bg-primary hover:text-white cursor-pointer">Technical Support</a>
+<a href="#" class="block px-4 py-2 text-gray-800 hover:bg-primary hover:text-white cursor-pointer">Business Partnership</a>
+<a href="#" class="block px-4 py-2 text-gray-800 hover:bg-primary hover:text-white cursor-pointer">Other</a>
+</div>
+</div>
+</div>
+<div class="form-field relative">
+<label for="message" class="absolute left-3 top-3 text-gray-500 pointer-events-none">Your Message</label>
+<textarea id="message" name="message" rows="4" required class="w-full px-3 py-3 border border-gray-300 rounded-button focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"></textarea>
+</div>
+<button type="submit" class="w-full bg-primary text-white px-6 py-3 rounded-button hover:bg-primary/90 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 !rounded-button whitespace-nowrap cursor-pointer">
+Send Message
+</button>
+</form>
+</div>
+<div class="space-y-8">
+<div class="bg-white rounded-lg shadow-lg p-8 contact-card">
+<h3 class="text-xl font-semibold text-gray-900 mb-4">Contact Information</h3>
+<div class="space-y-4">
+<div class="flex items-center">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary">
+<i class="ri-map-pin-line ri-lg"></i>
+</div>
+<div class="ml-4">
+<p class="text-gray-600">123 Innovation Drive</p>
+<p class="text-gray-600">San Francisco, CA 94107</p>
+</div>
+</div>
+<div class="flex items-center">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary">
+<i class="ri-phone-line ri-lg"></i>
+</div>
+<div class="ml-4">
+<p class="text-gray-600">+91 9176031131</p>
+</div>
+</div>
+<div class="flex items-center">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary">
+<i class="ri-mail-line ri-lg"></i>
+</div>
+<div class="ml-4">
+<p class="text-gray-600">AbhishekFounderCeo@company.com</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-lg p-8 contact-card">
+<h3 class="text-xl font-semibold text-gray-900 mb-4">Business Hours</h3>
+<div class="space-y-2">
+<div class="flex justify-between">
+<span class="text-gray-600">Monday - Friday</span>
+<span class="text-gray-900">9:00 AM - 6:00 PM</span>
+</div>
+<div class="flex justify-between">
+<span class="text-gray-600">Saturday</span>
+<span class="text-gray-900">10:00 AM - 4:00 PM</span>
+</div>
+<div class="flex justify-between">
+<span class="text-gray-600">Sunday</span>
+<span class="text-gray-900">Closed</span>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-lg p-8 contact-card">
+<h3 class="text-xl font-semibold text-gray-900 mb-4">Connect With Us</h3>
+<div class="flex space-x-4">
+<a href="#" class="social-icon w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-white transition-colors duration-200">
+<i class="ri-facebook-fill ri-lg"></i>
+</a>
+<a href="#" class="social-icon w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-white transition-colors duration-200">
+<i class="ri-twitter-fill ri-lg"></i>
+</a>
+<a href="#" class="social-icon w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-white transition-colors duration-200">
+<i class="ri-linkedin-fill ri-lg"></i>
+</a>
+<a href="#" class="social-icon w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-white transition-colors duration-200">
+<i class="ri-instagram-fill ri-lg"></i>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="successMessage" class="fixed top-0 left-0 right-0 bg-green-500 text-white text-center py-4 success-message">
+Message sent successfully!
+</div>
+<footer class="bg-white mt-12">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div>
+<a href="/" class="font-['Pacifico'] text-2xl text-primary">logo</a>
+<p class="mt-4 text-gray-600">Empowering innovation through technology solutions.</p>
+</div>
+<div>
+<h4 class="text-gray-900 font-semibold mb-4">Quick Links</h4>
+<ul class="space-y-2">
+<li><a href="/" class="text-gray-600 hover:text-primary">Home</a></li>
+<li><a href="about.html" class="text-gray-600 hover:text-primary">About</a></li>
+<li><a href="about.html" class="text-gray-600 hover:text-primary">Services</a></li>
+<li><a href="contact.html" class="text-gray-600 hover:text-primary">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-gray-900 font-semibold mb-4">Legal</h4>
+<ul class="space-y-2">
+<li><a href="/privacy" class="text-gray-600 hover:text-primary">Privacy Policy</a></li>
+<li><a href="/terms" class="text-gray-600 hover:text-primary">Terms of Service</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-gray-900 font-semibold mb-4">Newsletter</h4>
+<form class="mt-4">
+<div class="flex">
+<input type="email" placeholder="Enter your email" class="flex-1 px-3 py-2 border border-gray-300 rounded-l-button focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary">
+<button type="submit" class="bg-primary text-white px-4 py-2 rounded-r-button hover:bg-primary/90 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 !rounded-button whitespace-nowrap cursor-pointer">
+Subscribe
+</button>
+</div>
+</form>
+</div>
+</div>
+<div class="mt-8 pt-8 border-t border-gray-200">
+<p class="text-center text-gray-600">&copy; 2025 Company Name. All rights reserved.</p>
+</div>
+</div>
+</footer>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+const subjectDropdown = document.getElementById('subjectDropdown');
+const subjectOptions = document.getElementById('subjectOptions');
+const selectedSubject = document.getElementById('selectedSubject');
+const contactForm = document.getElementById('contactForm');
+const successMessage = document.getElementById('successMessage');
+subjectDropdown.addEventListener('click', function() {
+subjectOptions.classList.toggle('hidden');
+});
+document.addEventListener('click', function(event) {
+if (!subjectDropdown.contains(event.target)) {
+subjectOptions.classList.add('hidden');
+}
+});
+subjectOptions.querySelectorAll('a').forEach(option => {
+option.addEventListener('click', function(e) {
+e.preventDefault();
+selectedSubject.textContent = this.textContent;
+subjectOptions.classList.add('hidden');
+});
+});
+contactForm.addEventListener('submit', function(e) {
+e.preventDefault();
+successMessage.classList.add('show');
+setTimeout(() => {
+successMessage.classList.remove('show');
+}, 3000);
+contactForm.reset();
+});
+const formFields = document.querySelectorAll('.form-field input, .form-field textarea');
+formFields.forEach(field => {
+field.addEventListener('focus', function() {
+this.parentElement.querySelector('label').style.transform = 'translateY(-1.5rem) scale(0.75)';
+this.parentElement.querySelector('label').style.background = 'white';
+this.parentElement.querySelector('label').style.padding = '0 0.25rem';
+});
+field.addEventListener('blur', function() {
+if (!this.value) {
+this.parentElement.querySelector('label').style.transform = '';
+this.parentElement.querySelector('label').style.background = '';
+this.parentElement.querySelector('label').style.padding = '';
+}
+});
+});
+});
+</script>
+</body>
+</html>

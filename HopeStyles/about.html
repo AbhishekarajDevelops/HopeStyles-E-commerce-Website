@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Hope Styles</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2C3E50',
+                        secondary: '#E5E8E8'
+                    },
+                    borderRadius: {
+                        'none': '0px',
+                        'sm': '4px',
+                        DEFAULT: '8px',
+                        'md': '12px',
+                        'lg': '16px',
+                        'xl': '20px',
+                        '2xl': '24px',
+                        '3xl': '32px',
+                        'full': '9999px',
+                        'button': '8px'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-white">
+    <nav class="fixed w-full bg-white/95 backdrop-blur-sm z-50 border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="/" class="font-['Pacifico'] text-2xl text-primary">Hope Styles</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-600 hover:text-primary">Home</a>
+                    <a href="about.html" class="text-primary font-medium">About Us</a>
+                    <a href="collections.html" class="text-gray-600 hover:text-primary">Collections</a>
+                    <a href="contact.html" class="text-gray-600 hover:text-primary">Contact</a>
+                    <button class="bg-primary text-white px-6 py-2 !rounded-button hover:bg-primary/90 transition-colors whitespace-nowrap cursor-pointer">Shop Now</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="relative pt-16">
+        <div class="absolute inset-0 z-0">
+            <img src="https://public.readdy.ai/ai/img_res/81fa6f3623895bcd2b8843523bd65276.jpg" class="w-full h-full object-cover object-top" alt="Hero Image">
+            <div class="absolute inset-0 bg-black/40"></div>
+        </div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
+            <h1 class="text-5xl font-['Playfair_Display'] font-bold text-white mb-6">About Hope Styles</h1>
+            <p class="text-xl text-white/90 max-w-2xl">Crafting timeless casual wear for the modern gentleman. Where comfort meets sophistication, and style knows no bounds.</p>
+        </div>
+    </section>
+
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-4xl font-['Playfair_Display'] font-bold text-primary mb-8">Our Story</h2>
+                    <div class="space-y-6 text-gray-600">
+                        <p>Founded in 2020, Hope Styles emerged from a simple yet powerful vision: to redefine men's casual wear by combining timeless elegance with modern comfort. Our journey began in a small studio in London, where our founder, James Harrison, sought to address the gap between formal wear and casual comfort.</p>
+                        <p>What started as a curated collection of essential pieces has evolved into a comprehensive lifestyle brand that speaks to the contemporary man. We believe that style should enhance your life, not complicate it. This philosophy drives every decision we make, from fabric selection to design details.</p>
+                        <p>Today, Hope Styles stands as a testament to our commitment to quality, sustainability, and timeless design. We're not just creating clothes; we're crafting experiences and confidence for men who appreciate the finer details in life.</p>
+                    </div>
+                </div>
+                <div class="relative h-[600px] rounded-lg overflow-hidden shadow-xl">
+                    <img src="https://public.readdy.ai/ai/img_res/9a9c82e59357ae741d2d59bf6f0a6798.jpg" class="w-full h-full object-cover object-top" alt="Brand Story Image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-['Playfair_Display'] font-bold text-primary text-center mb-16">Our Core Values</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-lg transition-shadow">
+                    <div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
+                        <i class="ri-award-line text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-primary mb-4">Quality First</h3>
+                    <p class="text-gray-600">We source the finest materials and partner with skilled artisans to ensure every piece meets our exacting standards.</p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-lg transition-shadow">
+                    <div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
+                        <i class="ri-heart-line text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-primary mb-4">Timeless Style</h3>
+                    <p class="text-gray-600">Our designs transcend trends, focusing on classic silhouettes that stand the test of time.</p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-lg transition-shadow">
+                    <div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
+                        <i class="ri-leaf-line text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-primary mb-4">Sustainability</h3>
+                    <p class="text-gray-600">We're committed to ethical production and environmental responsibility in every step of our process.</p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-lg transition-shadow">
+                    <div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
+                        <i class="ri-user-smile-line text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-primary mb-4">Customer Focus</h3>
+                    <p class="text-gray-600">Your satisfaction drives us. We're dedicated to providing exceptional service and experiences.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-['Playfair_Display'] font-bold text-primary text-center mb-16">Meet Our Team</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="group">
+                    <div class="relative h-[400px] rounded-lg overflow-hidden mb-6">
+                        <img src="https://public.readdy.ai/ai/img_res/d145597e1ddda05f75b9f032fe032ea8.jpg" class="w-full h-full object-cover object-top" alt="James Harrison">
+                        <div class="absolute inset-0 bg-primary/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <div class="flex space-x-4">
+                                <a href="#" class="w-10 h-10 flex items-center justify-center bg-white rounded-full">
+                                    <i class="ri-linkedin-fill text-primary"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 flex items-center justify-center bg-white rounded-full">
+                                    <i class="ri-twitter-fill text-primary"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-semibold text-primary">Abhishekaraj</h3>
+                    <p class="text-gray-600">Founder & Creative Director</p>
+                </div>
+                <div class="group">
+                    <div class="relative h-[400px] rounded-lg overflow-hidden mb-6">
+                        <img src="https://public.readdy.ai/ai/img_res/a0186f9fad16eb3a5900f93fc9733573.jpg" class="w-full h-full object-cover object-top" alt="Sarah Chen">
+                        <div class="absolute inset-0 bg-primary/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <div class="flex space-x-4">
+                                <a href="#" class="w-10 h-10 flex items-center justify-center bg-white rounded-full">
+                                    <i class="ri-linkedin-fill text-primary"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 flex items-center justify-center bg-white rounded-full">
+                                    <i class="ri-twitter-fill text-primary"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-semibold text-primary">Sarah Chen</h3>
+                    <p class="text-gray-600">Head of Design</p>
+                </div>
+                <div class="group">
+                    <div class="relative h-[400px] rounded-lg overflow-hidden mb-6">
+                        <img src="https://public.readdy.ai/ai/img_res/7cd90f21542ae2614d3abec76d5dc7a8.jpg" class="w-full h-full object-cover object-top" alt="Michael Roberts">
+                        <div class="absolute inset-0 bg-primary/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <div class="flex space-x-4">
+                                <a href="#" class="w-10 h-10 flex items-center justify-center bg-white rounded-full">
+                                    <i class="ri-linkedin-fill text-primary"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 flex items-center justify-center bg-white rounded-full">
+                                    <i class="ri-twitter-fill text-primary"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-semibold text-primary">Gopinath</h3>
+                    <p class="text-gray-600">Operations Director</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-24 bg-primary text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl font-['Playfair_Display'] font-bold mb-8">Our Vision</h2>
+            <p class="text-xl max-w-3xl mx-auto mb-12">To revolutionize men's casual wear by creating timeless pieces that empower men to express their authentic selves while maintaining the perfect balance between comfort and style.</p>
+            <button class="bg-white text-primary px-8 py-3 !rounded-button hover:bg-gray-100 transition-colors whitespace-nowrap cursor-pointer">Explore Our Collection</button>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <div>
+                    <a href="/" class="font-['Pacifico'] text-2xl text-white mb-6 block">Hope Styles</a>
+                    <p class="text-gray-400">Elevating everyday style for the modern gentleman.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Quick Links</h3>
+                    <ul class="space-y-4">
+                        <li><a href="/" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="/about" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="/collections" class="text-gray-400 hover:text-white transition-colors">Collections</a></li>
+                        <li><a href="/contact" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Connect</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-700 hover:border-white transition-colors">
+                            <i class="ri-instagram-line"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-700 hover:border-white transition-colors">
+                            <i class="ri-facebook-line"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-700 hover:border-white transition-colors">
+                            <i class="ri-twitter-line"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Newsletter</h3>
+                    <form class="space-y-4">
+                        <input type="email" placeholder="Your email address" class="w-full px-4 py-2 bg-gray-800 border-none !rounded-button text-white placeholder-gray-400">
+                        <button type="submit" class="w-full bg-white text-primary px-4 py-2 !rounded-button hover:bg-gray-100 transition-colors whitespace-nowrap cursor-pointer">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Hope Styles. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

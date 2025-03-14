@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Casual Wear Shop</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+.card-transition { transition: transform 0.3s ease; }
+.card-transition:hover { transform: translateY(-4px); }
+</style>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: '#3b82f6',
+secondary: '#f59e0b'
+},
+borderRadius: {
+'none': '0px',
+'sm': '4px',
+DEFAULT: '8px',
+'md': '12px',
+'lg': '16px',
+'xl': '20px',
+'2xl': '24px',
+'3xl': '32px',
+'full': '9999px',
+'button': '8px'
+}
+}
+}
+}
+</script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+<header class="fixed top-0 left-0 right-0 bg-white shadow-sm z-50">
+<div class="max-w-7xl mx-auto px-4">
+<div class="flex items-center justify-between h-16">
+<div class="flex items-center">
+<h1 class="text-3xl font-['Pacifico'] text-primary">men's fashion</h1>
+</div>
+<div class="flex items-center space-x-6">
+<div class="relative">
+<input type="text" placeholder="Search products..." class="w-64 pl-10 pr-4 py-2 rounded-full bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary text-sm">
+<div class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 flex items-center justify-center">
+<i class="ri-search-line text-gray-400"></i>
+</div>
+</div>
+<a href="https://readdy.ai/home/49b6d15a-9171-400e-aa55-68d0e3d55f19/0072d766-b647-442d-93bb-2c39df07e047" data-readdy="true" class="relative w-8 h-8 flex items-center justify-center cursor-pointer">
+<i class="ri-shopping-cart-line text-xl"></i>
+<span class="absolute -top-1 -right-1 w-5 h-5 bg-secondary text-white text-xs rounded-full flex items-center justify-center">3</span>
+</a>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-4 pt-24 pb-12">
+<div class="flex items-center justify-between mb-8">
+<div class="flex space-x-4">
+<button class="px-4 py-2 bg-primary text-white !rounded-button cursor-pointer">All</button>
+<button class="px-4 py-2 bg-white text-gray-700 border !rounded-button hover:bg-gray-50 cursor-pointer category-btn" data-category="all">All</button>
+<button class="px-4 py-2 bg-white text-gray-700 border !rounded-button hover:bg-gray-50 cursor-pointer category-btn" data-category="casual">Casual</button>
+<button class="px-4 py-2 bg-white text-gray-700 border !rounded-button hover:bg-gray-50 cursor-pointer category-btn" data-category="formal">Formal</button>
+<button class="px-4 py-2 bg-white text-gray-700 border !rounded-button hover:bg-gray-50 cursor-pointer category-btn" data-category="sport">Sport</button>
+<button class="px-4 py-2 bg-white text-gray-700 border !rounded-button hover:bg-gray-50 cursor-pointer category-btn" data-category="tshirt">T-Shirts</button>
+</div>
+<div class="relative">
+<button id="sortButton" class="px-4 py-2 bg-white border !rounded-button flex items-center space-x-2 cursor-pointer">
+<span>Sort by</span>
+<i class="ri-arrow-down-s-line"></i>
+</button>
+<div id="sortDropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded shadow-lg z-10">
+<div class="py-1">
+<a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 cursor-pointer">Price: Low to High</a>
+<a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 cursor-pointer">Price: High to Low</a>
+<a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 cursor-pointer">Newest</a>
+<a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 cursor-pointer">Popular</a>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="productGrid">
+</div>
+</main>
+<script>
+const products = [
+{
+name: "Classic Crew Neck T-Shirt",
+description: "Essential crew neck t-shirt in premium cotton, perfect for everyday wear",
+price: 24.99,
+image: "https://public.readdy.ai/ai/img_res/58b0dd309ee0f018dad314e22d2236d8.jpg"
+},
+{
+name: "Henley Long Sleeve Shirt",
+description: "Comfortable henley shirt with button placket detail",
+price: 32.99,
+image: "https://public.readdy.ai/ai/img_res/6748ae9263855a2ce099ea81b4cdcf85.jpg"
+},
+{
+name: "Polo Shirt",
+description: "Classic fit polo shirt in breathable pique fabric",
+price: 29.99,
+image: "https://public.readdy.ai/ai/img_res/6738e3292d7a1d5e6af3346510e2ece2.jpg"
+},
+{
+name: "Oxford Button-Down Shirt",
+description: "Traditional oxford cloth button-down shirt in slim fit",
+price: 39.99,
+image: "https://public.readdy.ai/ai/img_res/4b726da724573e81aba3372b047f08b2.jpg"
+},
+{
+name: "V-Neck T-Shirt",
+description: "Soft cotton v-neck t-shirt with modern fit",
+price: 22.99,
+image: "https://public.readdy.ai/ai/img_res/cc16be43d099042ca6e4e8e9fc46d29d.jpg"
+},
+{
+name: "Casual Linen Shirt",
+description: "Lightweight linen shirt perfect for summer",
+price: 45.99,
+image: "https://public.readdy.ai/ai/img_res/b2de8d7a0d4ff56bd20c59e76f48c8d3.jpg"
+},
+{
+name: "Graphic Print T-Shirt",
+description: "Urban style graphic t-shirt with modern design",
+price: 27.99,
+image: "https://public.readdy.ai/ai/img_res/76564a292114e60aab5231b9cb297b5f.jpg"
+},
+{
+name: "Denim Shirt",
+description: "Classic denim shirt with pearl snap buttons",
+price: 49.99,
+image: "https://public.readdy.ai/ai/img_res/8c5249d988195ba8dece4e6a7806eb86.jpg"
+},
+{
+name: "Performance Sport Shirt",
+description: "Moisture-wicking athletic shirt for active lifestyle",
+price: 34.99,
+image: "https://public.readdy.ai/ai/img_res/d54ca93c1352a73b5df8688cdd8539f2.jpg"
+}
+];
+function createProductCard(product) {
+return `
+<div class="bg-white rounded-lg shadow-sm overflow-hidden card-transition">
+<div class="relative h-64">
+<img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-4">
+<h3 class="text-lg font-semibold text-gray-800">${product.name}</h3>
+<p class="mt-1 text-sm text-gray-600 line-clamp-2">${product.description}</p>
+<div class="mt-4 flex items-center justify-between">
+<span class="text-xl font-bold text-primary">$${product.price}</span>
+<button class="px-4 py-2 bg-primary text-white !rounded-button hover:bg-primary/90 cursor-pointer whitespace-nowrap">Buy Now</button>
+</div>
+</div>
+</div>
+`;
+}
+function filterProducts(category) {
+let filteredProducts;
+if (category === 'all') {
+filteredProducts = products;
+} else {
+filteredProducts = products.filter(product => {
+const searchText = (product.name + ' ' + product.description).toLowerCase();
+switch(category) {
+case 'casual':
+return searchText.includes('crew') || searchText.includes('henley') || searchText.includes('v-neck');
+case 'formal':
+return searchText.includes('oxford') || searchText.includes('button-down') || searchText.includes('linen');
+case 'sport':
+return searchText.includes('performance') || searchText.includes('athletic');
+case 'tshirt':
+return searchText.includes('t-shirt');
+default:
+return true;
+}
+});
+}
+document.getElementById('productGrid').innerHTML = filteredProducts.map(product => createProductCard(product)).join('');
+}
+document.querySelectorAll('.category-btn').forEach(button => {
+button.addEventListener('click', (e) => {
+// Remove active class from all buttons
+document.querySelectorAll('.category-btn').forEach(btn => {
+btn.classList.remove('bg-primary', 'text-white');
+btn.classList.add('bg-white', 'text-gray-700');
+});
+// Add active class to clicked button
+e.target.classList.remove('bg-white', 'text-gray-700');
+e.target.classList.add('bg-primary', 'text-white');
+// Filter products
+const category = e.target.dataset.category;
+filterProducts(category);
+});
+});
+// Initial load - show all products
+filterProducts('all');
+document.querySelector('[data-category="all"]').classList.add('bg-primary', 'text-white');
+document.querySelector('[data-category="all"]').classList.remove('bg-white', 'text-gray-700');
+const sortButton = document.getElementById('sortButton');
+const sortDropdown = document.getElementById('sortDropdown');
+sortButton.addEventListener('click', () => {
+sortDropdown.classList.toggle('hidden');
+});
+document.addEventListener('click', (event) => {
+if (!sortButton.contains(event.target) && !sortDropdown.contains(event.target)) {
+sortDropdown.classList.add('hidden');
+}
+});
+</script>
+</body>
+</html>
